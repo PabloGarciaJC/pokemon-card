@@ -22,8 +22,8 @@
   <script type="module">
     import { PokemonCard } from './src/index.js';
 
-    if (!customElements.get('packages-pokemon-card')) {
-      customElements.define('packages-pokemon-card', PokemonCard);
+    if (!customElements.get('pokemon-card')) {
+      customElements.define('pokemon-card', PokemonCard);
     }
 
     const pokemons = [
@@ -60,7 +60,7 @@
     const container = document.getElementById('pokemon-container');
 
     pokemons.forEach(pokemonData => {
-      const card = document.createElement('packages-pokemon-card');
+      const card = document.createElement('pokemon-card');
       card.data = pokemonData;
       container.appendChild(card);
     });

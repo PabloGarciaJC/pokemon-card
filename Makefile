@@ -145,3 +145,13 @@ npm-publish:
 # npm version patch   # Cambios menores o corrección de bugs (ej: 1.0.3 → 1.0.4)
 # npm version minor   # Nuevas funcionalidades, sin romper compatibilidad (ej: 1.0.3 → 1.1.0)
 # npm version major   # Cambios grandes que rompen compatibilidad (ej: 1.0.3 → 2.0.0)
+
+
+
+
+
+
+# Eliminar la versión anterior
+# rm -rf node_modules/pokemon-card-component
+# npm uninstall pokemon-card-component
+
