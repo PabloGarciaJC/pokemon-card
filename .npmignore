@@ -1,0 +1,9 @@
+# Archivos y carpetas que NO queremos publicar
+.docker/
+.env
+.env.example
+.git/
+.gitignore
+Makefile
+index.html
+package-lock.json

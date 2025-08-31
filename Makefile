@@ -132,27 +132,16 @@ npm-publish:
 ## ---------------------------------------------------------
 ## Versionado y publicación automática con safe.directory
 ## ---------------------------------------------------------
+# git config --global user.name "PabloGarciaJC"
+#  git config --global user.email "pablogarciiajc@gmail.com"
 
-.PHONY: npm-version
-npm-version:
-	@echo "Configurando safe.directory y aumentando versión patch..."
-	$(DOCKER_COMPOSE) exec packages-pokemon-card git config --global --add safe.directory /var/www/html
-	$(DOCKER_COMPOSE) exec packages-pokemon-card npm version patch
+# npm adduser
+# Esto autoriza tu máquina para publicar paquetes en npm.
 
-.PHONY: npm-publish-patch
-npm-publish-patch: npm-version npm-publish
-	@echo "Paquete publicado con nueva versión patch."
+# npm publish
 
-.PHONY: npm-publish-minor
-npm-publish-minor:
-	@echo "Configurando safe.directory y aumentando versión minor..."
-	$(DOCKER_COMPOSE) exec packages-pokemon-card git config --global --add safe.directory /var/www/html
-	$(DOCKER_COMPOSE) exec packages-pokemon-card npm version minor
-	$(DOCKER_COMPOSE) exec packages-pokemon-card npm publish --access public
 
-.PHONY: npm-publish-major
-npm-publish-major:
-	@echo "Configurando safe.directory y aumentando versión major..."
-	$(DOCKER_COMPOSE) exec packages-pokemon-card git config --global --add safe.directory /var/www/html
-	$(DOCKER_COMPOSE) exec packages-pokemon-card npm version major
-	$(DOCKER_COMPOSE) exec packages-pokemon-card npm publish --access public
+
+# npm version patch   # Cambios menores o corrección de bugs (ej: 1.0.3 → 1.0.4)
+# npm version minor   # Nuevas funcionalidades, sin romper compatibilidad (ej: 1.0.3 → 1.1.0)
+# npm version major   # Cambios grandes que rompen compatibilidad (ej: 1.0.3 → 2.0.0)
