@@ -1,4 +1,6 @@
-// Colores por tipo
+// src/index.js
+
+// Colores por tipo de Pokémon
 const typeColors = {
   fire: '#f56565',
   water: '#4299e1',
@@ -60,6 +62,7 @@ export class PokemonCard extends HTMLElement {
   }
 }
 
-if (!customElements.get('pokemon-card')) {
-  customElements.define('pokemon-card', PokemonCard);
+// Registrar el componente
+if (!customElements.get('packages-pokemon-card')) {
+  customElements.define('packages-pokemon-card', PokemonCard);
 }

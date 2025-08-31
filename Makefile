@@ -58,15 +58,15 @@ stop:
 
 .PHONY: install-dependencies
 install-dependencies:
-	$(DOCKER_COMPOSE) exec pokemon-card git config --global --add safe.directory /var/www/html
-	$(DOCKER_COMPOSE) exec pokemon-card composer require monolog/monolog
-	$(DOCKER_COMPOSE) exec pokemon-card composer require --dev phpunit/phpunit ^11
+	$(DOCKER_COMPOSE) exec packages-pokemon-card git config --global --add safe.directory /var/www/html
+	$(DOCKER_COMPOSE) exec packages-pokemon-card composer require monolog/monolog
+	$(DOCKER_COMPOSE) exec packages-pokemon-card composer require --dev phpunit/phpunit ^11
 
 .PHONY: prepare-tests
 prepare-tests:
-	$(DOCKER_COMPOSE) exec pokemon-card mv /usr/local/bin/phpunit /var/www/html/tests/phpunit.phar
-	$(DOCKER_COMPOSE) exec pokemon-card chmod +x /var/www/html/tests/phpunit.phar
-	$(DOCKER_COMPOSE) exec pokemon-card chown -R 1000:1000 /var/www/html/tests
+	$(DOCKER_COMPOSE) exec packages-pokemon-card mv /usr/local/bin/phpunit /var/www/html/tests/phpunit.phar
+	$(DOCKER_COMPOSE) exec packages-pokemon-card chmod +x /var/www/html/tests/phpunit.phar
+	$(DOCKER_COMPOSE) exec packages-pokemon-card chown -R 1000:1000 /var/www/html/tests
 
 .PHONY: clean-docker
 clean-docker:
@@ -76,12 +76,12 @@ clean-docker:
 
 .PHONY: init-tes
 init-tes:
-	$(DOCKER_COMPOSE) exec pokemon-card git config --global --add safe.directory /var/www/html
-	$(DOCKER_COMPOSE) exec pokemon-card ./tests/phpunit.phar --configuration ./tests/phpunit.xml --testdox
+	$(DOCKER_COMPOSE) exec packages-pokemon-card git config --global --add safe.directory /var/www/html
+	$(DOCKER_COMPOSE) exec packages-pokemon-card ./tests/phpunit.phar --configuration ./tests/phpunit.xml --testdox
 
 .PHONY: shell
 shell:
-	$(DOCKER_COMPOSE) exec --user pablogarciajc pokemon-card  /bin/sh -c "cd /var/www/html/; exec bash -l"
+	$(DOCKER_COMPOSE) exec --user pablogarciajc packages-pokemon-card  /bin/sh -c "cd /var/www/html/; exec bash -l"
 
 ## ---------------------------------------------------------
 ## Inicializar npm y crear package.json
@@ -89,7 +89,7 @@ shell:
 
 .PHONY: npm-init
 npm-init:
-	$(DOCKER_COMPOSE) exec pokemon-card npm init -y
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm init -y
 
 ## ---------------------------------------------------------
 ## Instalar dependencias de npm
@@ -97,9 +97,23 @@ npm-init:
 
 .PHONY: npm-install
 npm-install:
-	$(DOCKER_COMPOSE) exec pokemon-card npm install
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm install
 
+## ---------------------------------------------------------
+## Vincular paquete local para probarlo en otros proyectos
+## ---------------------------------------------------------
 
+.PHONY: npm-link
+npm-link:
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm link
+
+## ---------------------------------------------------------
+## Desenlazar paquete de proyecto local
+## ---------------------------------------------------------
+
+.PHONY: npm-unlink
+npm-unlink:
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm unlink
 
 
 

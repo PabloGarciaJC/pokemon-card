@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Componente PokemonCard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+  <!-- Título y descripción del componente -->
+  <header class="text-center mb-10">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-2">Componente PokémonCard</h1>
+    <p class="text-gray-600 text-lg sm:text-xl">
+      Este es un <strong>componente web reutilizable</strong> que permite mostrar tarjetas de Pokémon con información detallada de altura, peso y tipo, de manera profesional y llamativa. Ideal para portafolios y demostraciones.
+    </p>
+  </header>
+
+  <!-- Contenedor de las tarjetas -->
+  <div id="pokemon-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"></div>
+
+  <script type="module">
+    import { PokemonCard } from './src/index.js';
+
+    if (!customElements.get('packages-pokemon-card')) {
+      customElements.define('packages-pokemon-card', PokemonCard);
+    }
+
+    const pokemons = [
+      {
+        name: 'pikachu',
+        image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png',
+        height: 4,
+        weight: 60,
+        types: ['electric']
+      },
+      {
+        name: 'bulbasaur',
+        image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
+        height: 7,
+        weight: 69,
+        types: ['grass', 'poison']
+      },
+      {
+        name: 'charmander',
+        image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png',
+        height: 6,
+        weight: 85,
+        types: ['fire']
+      },
+      {
+        name: 'squirtle',
+        image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png',
+        height: 5,
+        weight: 90,
+        types: ['water']
+      }
+    ];
+
+    const container = document.getElementById('pokemon-container');
+
+    pokemons.forEach(pokemonData => {
+      const card = document.createElement('packages-pokemon-card');
+      card.data = pokemonData;
+      container.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
