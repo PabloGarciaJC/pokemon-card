@@ -1,5 +1,5 @@
 services:
-  landing_page_async_javascript:
+  pokemon-card:
     build:
       context: .
       dockerfile: ./php_server/Dockerfile
@@ -8,17 +8,17 @@ services:
         NEW_GID: ${NEW_GID}
         MY_USER: ${MY_USER}
         MY_GROUP: ${MY_GROUP}
-    container_name: landing_page_async_javascript
+    container_name: pokemon-card
     ports:
       - "${PHP_APACHE_PORT}:80"
     volumes:
       - ../.:/var/www/html
     networks:
-      - network_landing_page_async_javascript
+      - network_pokemon-card
 
   mysql:
     image: mysql:latest
-    container_name: mysql_landing_page_async_javascript
+    container_name: mysql_pokemon-card
     ports:
       - "${MYSQL_PORT}:3306"
     environment:
@@ -29,15 +29,15 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - ./database:/docker-entrypoint-initdb.d
-      - persistent_landing_page_async_javascript:/var/lib/mysql:rw
+      - persistent_pokemon-card:/var/lib/mysql:rw
     depends_on:
-      - landing_page_async_javascript
+      - pokemon-card
     networks:
-      - network_landing_page_async_javascript
+      - network_pokemon-card
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin-landing_page_async_javascript
+    container_name: phpmyadmin-pokemon-card
     ports:
       - "${PHPMYADMIN_PORT}:80"
     environment:
@@ -45,7 +45,7 @@ services:
     depends_on:
       - mysql
     networks:
-      - network_landing_page_async_javascript
+      - network_pokemon-card
 
   phpunit:
     build:
@@ -59,12 +59,12 @@ services:
     volumes:
       - .:/app
     networks:
-      - network_landing_page_async_javascript
+      - network_pokemon-card
     entrypoint: ["phpunit", "--configuration", "/app/phpunit.xml"]
 
 networks:
-  network_landing_page_async_javascript:
-    name: network_landing_page_async_javascript
+  network_pokemon-card:
+    name: network_pokemon-card
 
 volumes:
-  persistent_landing_page_async_javascript:
+  persistent_pokemon-card:

@@ -1,0 +1,12 @@
+{
+  "name": "pokemon-card",
+  "version": "1.0.0",
+  "description": "Componente web de tarjetas Pokémon",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "echo 'Componente listo para usar'"
+  },
+  "keywords": ["pokemon", "webcomponent", "custom-element"],
+  "author": "Tu Nombre",
+  "license": "MIT"
+}

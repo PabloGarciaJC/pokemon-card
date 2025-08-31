@@ -58,15 +58,15 @@ stop:
 
 .PHONY: install-dependencies
 install-dependencies:
-	$(DOCKER_COMPOSE) exec landing_page_async_javascript git config --global --add safe.directory /var/www/html
-	$(DOCKER_COMPOSE) exec landing_page_async_javascript composer require monolog/monolog
-	$(DOCKER_COMPOSE) exec landing_page_async_javascript composer require --dev phpunit/phpunit ^11
+	$(DOCKER_COMPOSE) exec pokemon-card git config --global --add safe.directory /var/www/html
+	$(DOCKER_COMPOSE) exec pokemon-card composer require monolog/monolog
+	$(DOCKER_COMPOSE) exec pokemon-card composer require --dev phpunit/phpunit ^11
 
 .PHONY: prepare-tests
 prepare-tests:
-	$(DOCKER_COMPOSE) exec landing_page_async_javascript mv /usr/local/bin/phpunit /var/www/html/tests/phpunit.phar
-	$(DOCKER_COMPOSE) exec landing_page_async_javascript chmod +x /var/www/html/tests/phpunit.phar
-	$(DOCKER_COMPOSE) exec landing_page_async_javascript chown -R 1000:1000 /var/www/html/tests
+	$(DOCKER_COMPOSE) exec pokemon-card mv /usr/local/bin/phpunit /var/www/html/tests/phpunit.phar
+	$(DOCKER_COMPOSE) exec pokemon-card chmod +x /var/www/html/tests/phpunit.phar
+	$(DOCKER_COMPOSE) exec pokemon-card chown -R 1000:1000 /var/www/html/tests
 
 .PHONY: clean-docker
 clean-docker:
@@ -74,20 +74,31 @@ clean-docker:
 	sudo docker volume rm $$(sudo docker volume ls -q) || true
 	sudo docker network prune -f || true
 
-.PHONY: clean-docker-ecommerce
-clean-docker-ecommerce:
-	sudo docker rmi mysql:latest || true
-	sudo docker volume rm docker_persistent-ecommerce || true
-	sudo docker network rm network_ecommerce || true
-
 .PHONY: init-tes
 init-tes:
-	$(DOCKER_COMPOSE) exec landing_page_async_javascript git config --global --add safe.directory /var/www/html
-	$(DOCKER_COMPOSE) exec landing_page_async_javascript ./tests/phpunit.phar --configuration ./tests/phpunit.xml --testdox
+	$(DOCKER_COMPOSE) exec pokemon-card git config --global --add safe.directory /var/www/html
+	$(DOCKER_COMPOSE) exec pokemon-card ./tests/phpunit.phar --configuration ./tests/phpunit.xml --testdox
 
 .PHONY: shell
 shell:
-	$(DOCKER_COMPOSE) exec --user pablogarciajc landing_page_async_javascript  /bin/sh -c "cd /var/www/html/; exec bash -l"
+	$(DOCKER_COMPOSE) exec --user pablogarciajc pokemon-card  /bin/sh -c "cd /var/www/html/; exec bash -l"
+
+## ---------------------------------------------------------
+## Inicializar npm y crear package.json
+## ---------------------------------------------------------
+
+.PHONY: npm-init
+npm-init:
+	$(DOCKER_COMPOSE) exec pokemon-card npm init -y
+
+## ---------------------------------------------------------
+## Instalar dependencias de npm
+## ---------------------------------------------------------
+
+.PHONY: npm-install
+npm-install:
+	$(DOCKER_COMPOSE) exec pokemon-card npm install
+
 
 
 
