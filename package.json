@@ -1,17 +1,9 @@
 {
-  "name": "packages-pokemon-card",
+  "name": "pokemon-card-component",
   "version": "1.0.0",
   "description": "Componente web de tarjetas Pokémon",
   "main": "src/index.js",
-  "type": "module",
-  "bin": {
-    "packages-pokemon-card": "./bin/global.js"
-  },
-  "preferGlobal": true,
-  "scripts": {
-    "start": "echo 'Componente listo para usar'"
-  },
-  "keywords": ["pokemon", "webcomponent", "custom-element"],
+  "keywords": ["pokemon", "webcomponent", "custom-element", "cards", "pokedex"],
   "author": "PabloGarciaJC",
   "license": "MIT"
 }

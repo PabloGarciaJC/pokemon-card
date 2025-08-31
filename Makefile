@@ -81,7 +81,7 @@ init-tes:
 
 .PHONY: shell
 shell:
-	$(DOCKER_COMPOSE) exec --user pablogarciajc packages-pokemon-card  /bin/sh -c "cd /var/www/html/; exec bash -l"
+	$(DOCKER_COMPOSE) exec --user pablogarciajc packages-pokemon-card /bin/sh -c "cd /var/www/html/; exec bash -l"
 
 ## ---------------------------------------------------------
 ## Inicializar npm y crear package.json
@@ -115,6 +115,44 @@ npm-link:
 npm-unlink:
 	$(DOCKER_COMPOSE) exec packages-pokemon-card npm unlink
 
+## ---------------------------------------------------------
+## Publicar paquete en npm
+## ---------------------------------------------------------
 
+.PHONY: npm-login
+npm-login:
+	@echo "Iniciando sesión en npm dentro del contenedor..."
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm login
 
+.PHONY: npm-publish
+npm-publish:
+	@echo "Publicando paquete en npm..."
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm publish --access public
 
+## ---------------------------------------------------------
+## Versionado y publicación automática con safe.directory
+## ---------------------------------------------------------
+
+.PHONY: npm-version
+npm-version:
+	@echo "Configurando safe.directory y aumentando versión patch..."
+	$(DOCKER_COMPOSE) exec packages-pokemon-card git config --global --add safe.directory /var/www/html
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm version patch
+
+.PHONY: npm-publish-patch
+npm-publish-patch: npm-version npm-publish
+	@echo "Paquete publicado con nueva versión patch."
+
+.PHONY: npm-publish-minor
+npm-publish-minor:
+	@echo "Configurando safe.directory y aumentando versión minor..."
+	$(DOCKER_COMPOSE) exec packages-pokemon-card git config --global --add safe.directory /var/www/html
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm version minor
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm publish --access public
+
+.PHONY: npm-publish-major
+npm-publish-major:
+	@echo "Configurando safe.directory y aumentando versión major..."
+	$(DOCKER_COMPOSE) exec packages-pokemon-card git config --global --add safe.directory /var/www/html
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm version major
+	$(DOCKER_COMPOSE) exec packages-pokemon-card npm publish --access public
