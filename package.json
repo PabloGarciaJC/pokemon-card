@@ -1,9 +1,15 @@
 {
   "name": "pokemon-card-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Componente web de tarjetas Pokémon",
   "main": "src/index.js",
-  "keywords": ["pokemon", "webcomponent", "custom-element", "cards", "pokedex"],
+  "keywords": [
+    "pokemon",
+    "webcomponent",
+    "custom-element",
+    "cards",
+    "pokedex"
+  ],
   "author": "PabloGarciaJC",
   "license": "MIT"
 }
