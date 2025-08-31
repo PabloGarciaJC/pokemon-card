@@ -1,6 +1,6 @@
 {
   "name": "pokemon-card-component",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Componente web de tarjetas Pokémon",
   "main": "src/index.js",
   "keywords": [
