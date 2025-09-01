@@ -129,26 +129,5 @@ npm-publish:
 	@echo "Publicando paquete en npm..."
 	$(DOCKER_COMPOSE) exec packages-pokemon-card npm publish --access public
 
-## ---------------------------------------------------------
-## Versionado y publicación automática con safe.directory
-## ---------------------------------------------------------
-# git config --global user.name "PabloGarciaJC"
-# git config --global user.email "pablogarciiajc@gmail.com"
-
-# npm adduser
-# Esto autoriza tu máquina para publicar paquetes en npm.
-
-# npm publish
-
-# npm version patch   # Cambios menores o corrección de bugs (ej: 1.0.3 → 1.0.4)
-# npm version minor   # Nuevas funcionalidades, sin romper compatibilidad (ej: 1.0.3 → 1.1.0)
-# npm version major   # Cambios grandes que rompen compatibilidad (ej: 1.0.3 → 2.0.0)
-
-# Eliminar la versión anterior
-# rm -rf node_modules/pokemon-card-component
-# npm uninstall pokemon-card-component
-
-# npm install pokemon-card-component
-
 
 

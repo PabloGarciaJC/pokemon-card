@@ -16,10 +16,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PabloGarciaJC/landing-page-async-javascript.git"
+    "url": "git+https://github.com/PabloGarciaJC/pokemon-card-component.git"
   },
   "bugs": {
-    "url": "https://github.com/PabloGarciaJC/landing-page-async-javascript/issues"
+    "url": "https://github.com/PabloGarciaJC/pokemon-card-component/issues"
   },
   "homepage": "https://pablogarciajc.com/#readme",
   "scripts": {
