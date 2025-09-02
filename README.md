@@ -10,9 +10,6 @@
 
 [Ver proyecto aplicado en GitHub](https://github.com/PabloGarciaJC/landing-page-async-javascript)
 
-| ![Imagen 1](https://pablogarciajc.com/wp-content/uploads/2025/09/pokedex_1.webp) | ![Imagen 2](https://pablogarciajc.com/wp-content/uploads/2025/09/pokedex_2.webp) |
-|-----------|-----------|
-
 ---
 
 ## Funcionalidades principales
