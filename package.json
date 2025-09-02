@@ -1,6 +1,6 @@
 {
   "name": "pokemon-card-component",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Componente web personalizado para mostrar tarjetas de Pokémon con información detallada: nombre, altura, peso, imagen y tipos. Ideal para portafolios, demos y proyectos educativos.",
   "main": "src/index.js",
   "keywords": [
