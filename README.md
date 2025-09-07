@@ -6,9 +6,9 @@
 
 ## Project Demo
 
-[https://landing-page-async-javascript/](https://landing-page-async-javascript.pablogarciajc.com/)
+🌐 **Live Demo:** [https://landing-page-pokeapi.pablogarciajc.com](https://landing-page-pokeapi.pablogarciajc.com/)  
 
-[See project on GitHub](https://github.com/PabloGarciaJC/landing-page-async-javascript)
+💻 **Source Code:** [GitHub Repository](https://github.com/PabloGarciaJC/landing-page-pokeapi)  
 
 ---
 
